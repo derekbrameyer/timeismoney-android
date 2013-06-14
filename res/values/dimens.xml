@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="action_bar_height">48dp</dimen>
+    <dimen name="default_text_size">14sp</dimen>
+    <dimen name="default_text_size_h2">16sp</dimen>
+    <dimen name="default_text_size_h1">20sp</dimen>
+    <dimen name="default_text_size_large">24sp</dimen>
+    <dimen name="default_text_size_kinda_large">28sp</dimen>
+    <dimen name="default_text_size_very_large">36sp</dimen>
+    <dimen name="default_text_size_huge">44sp</dimen>
+    <dimen name="default_text_size_very_huge">72sp</dimen>
+    <dimen name="cost_text_size_ones">115sp</dimen>
+    <dimen name="cost_text_size_tens">95sp</dimen>
+    <dimen name="cost_text_size_hundreds">75sp</dimen>
+    <dimen name="cost_text_size_thousands">65sp</dimen>
+    <dimen name="cost_text_size_ten_thousands">55sp</dimen>
+    <dimen name="cost_text_size_hundred_thousands">50sp</dimen>
+    <dimen name="cost_text_size_millions">45sp</dimen>
+    <dimen name="cost_text_size_ten_millions">40sp</dimen>
+    <dimen name="cost_text_size_hundred_millions">37sp</dimen>
+
+    <dimen name="default_padding_half">5dp</dimen>
+    <dimen name="default_padding">10dp</dimen>
+    <dimen name="default_padding_double">20dp</dimen>
+    <dimen name="default_padding_triple">30dp</dimen>
+
+    <dimen name="button_corner_radius">6dp</dimen>
+    <dimen name="button_stroke_width">3dp</dimen>
+</resources>

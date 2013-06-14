@@ -1,0 +1,54 @@
+<resources>
+    <style name="Fill">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="Wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="FillWidth" parent="Wrap">
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+    <style name="FillHeight" parent="Wrap">
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="TimeIsMoneyActionBar" parent="Widget.Sherlock.ActionBar.Solid">
+        <item name="background">@color/orange</item>
+        <item name="android:background">@color/orange</item>
+        <item name="displayOptions">showHome|showTitle</item>
+        <item name="android:displayOptions">showHome|showTitle</item>
+        <item name="titleTextStyle">@style/TimeIsMoneyActionBarTitleTextStyle</item>
+        <item name="android:titleTextStyle">@style/TimeIsMoneyActionBarTitleTextStyle</item>
+        <item name="actionModeShareDrawable">@drawable/ic_menu_share</item>
+    </style>
+    <style name="TimeIsMoneyActionBarTitleTextStyle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="DefaultTextView" parent="Wrap">
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:textColor">@color/default_text_color</item>
+    </style>
+    <style name="DefaultTextView.H2" parent="DefaultTextView">
+        <item name="android:textSize">@dimen/default_text_size_h2</item>
+    </style>
+    <style name="DefaultTextView.H1" parent="DefaultTextView">
+        <item name="android:textSize">@dimen/default_text_size_h1</item>
+    </style>
+    <style name="DefaultTextView.Large" parent="DefaultTextView">
+        <item name="android:textSize">@dimen/default_text_size_large</item>
+    </style>
+    <style name="DefaultTextView.KindaLarge" parent="DefaultTextView">
+        <item name="android:textSize">@dimen/default_text_size_kinda_large</item>
+    </style>
+    <style name="DefaultTextView.VeryLarge" parent="DefaultTextView">
+        <item name="android:textSize">@dimen/default_text_size_very_large</item>
+    </style>
+    <style name="DefaultTextView.Huge" parent="DefaultTextView">
+        <item name="android:textSize">@dimen/default_text_size_huge</item>
+    </style>
+    <style name="DefaultTextView.VeryHuge" parent="DefaultTextView">
+        <item name="android:textSize">@dimen/default_text_size_very_huge</item>
+    </style>
+</resources>

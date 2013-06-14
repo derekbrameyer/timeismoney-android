@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Time=Money!</string>
+
+    <string name="default_font" translateable="false">RobotoSlab-Regular.ttf</string>
+    <string name="default_font_bold" translateable="false">RobotoSlab-Bold.ttf</string>
+    <string name="default_font_thin" translateable="false">RobotoSlab-Thin.ttf</string>
+    <string name="default_font_light" translateable="false">RobotoSlab-Light.ttf</string>
+    <string name="default_font_mono" translateable="false">Lekton-Regular.ttf</string>
+    <string name="default_font_mono_bold" translateable="false">Lekton-Bold.ttf</string>
+
+    <string name="hourly_rate">Hourly Rate</string>
+    <string name="num_people">Num. People</string>
+    <string name="people">People</string>
+    <string name="go_excl">Go!</string>
+    <string name="stop_excl">Stop!</string>
+    <string name="minus">Minus</string>
+    <string name="plus">Plus</string>
+    <string name="about">About</string>
+    <string name="action_bar_share_with">Share with…</string>
+    <string name="share_default_text">I\'m tracking my time with Time = Money! #timeismoney http://goo.gl/1uws1</string>
+    <string name="share_custom_text_zero">Just wasted %1$s over %2$s just on my own! #timeismoney http://goo.gl/1uws1
+    </string>
+    <string name="currency_per_hour">%1$s/hour</string>
+    <string name="donate">Donate</string>
+    <string name="reset">Reset</string>
+    <string name="ok">OK</string>
+    <plurals
+            name="share_custom_text">
+        <item quantity="one">Just wasted %1$s over %2$s with a chum! #timeismoney http://goo.gl/1uws1</item>
+        <item quantity="other">Just wasted %1$s over %2$s with %3$d chums! #timeismoney http://goo.gl/1uws1</item>
+    </plurals>
+    <string name="about_copy">Time=Money! is an app to calculate how much time you and your friends/co-workers are
+        wasting based on a certain hourly rate. Just put in your hourly rate, tap Go!, and adjust as time
+        passes.\n\nDeveloped by\nDoom on a Fireball Studios\n\nThis app is open source and available on
+        GitHub!\n\nVersion:
+    </string>
+</resources>
