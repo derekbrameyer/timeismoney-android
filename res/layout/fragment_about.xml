@@ -9,10 +9,11 @@
             android:orientation="vertical"
             android:padding="@dimen/default_padding">
         <oak.widget.TextViewWithFont
-                style="@style/DefaultTextView"
+                style="@style/Wrap"
                 android:id="@+id/about_copy"
                 android:padding="@dimen/default_padding"
                 android:text="@string/about_copy"
+                android:textSize="@dimen/default_text_size"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
                 oak:font="@string/default_font"/>
