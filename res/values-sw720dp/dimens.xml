@@ -10,10 +10,10 @@
     <dimen name="default_text_size_huge">110sp</dimen>
     <dimen name="default_text_size_very_huge">110sp</dimen>
     <dimen name="cost_text_size_ones">240sp</dimen>
-    <dimen name="cost_text_size_tens">210sp</dimen>
-    <dimen name="cost_text_size_hundreds">180sp</dimen>
-    <dimen name="cost_text_size_thousands">160sp</dimen>
-    <dimen name="cost_text_size_ten_thousands">140sp</dimen>
+    <dimen name="cost_text_size_tens">200sp</dimen>
+    <dimen name="cost_text_size_hundreds">160sp</dimen>
+    <dimen name="cost_text_size_thousands">140sp</dimen>
+    <dimen name="cost_text_size_ten_thousands">130sp</dimen>
     <dimen name="cost_text_size_hundred_thousands">120sp</dimen>
     <dimen name="cost_text_size_millions">110sp</dimen>
     <dimen name="cost_text_size_ten_millions">100sp</dimen>

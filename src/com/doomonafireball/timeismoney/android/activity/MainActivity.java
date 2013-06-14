@@ -425,7 +425,7 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
         }
         mTotalTimeElapsed +=
                 (((long) hours) * 60l * 60l * 1000l) + (((long) minutes) * 60l * 1000l) + (((long) seconds) * 1000l);
-        mCost = mMillisRate.multiply(mPeopleCount).multiply(new BigDecimal(mCurrentTimeElapsed));
+        mCost = mMillisRate.multiply(mPeopleCount).multiply(new BigDecimal(mTotalTimeElapsed));
         setCost();
         setTimeElapsed();
     }
