@@ -420,7 +420,10 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
 
     @Override
     public void onDialogHmsSet(int hours, int minutes, int seconds) {
-        mCurrentTimeElapsed =
+        if (mTotalTimeElapsed == 0l) {
+            reset.setVisibility(View.VISIBLE);
+        }
+        mTotalTimeElapsed +=
                 (((long) hours) * 60l * 60l * 1000l) + (((long) minutes) * 60l * 1000l) + (((long) seconds) * 1000l);
         mCost = mMillisRate.multiply(mPeopleCount).multiply(new BigDecimal(mCurrentTimeElapsed));
         setCost();
