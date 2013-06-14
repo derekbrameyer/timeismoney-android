@@ -18,6 +18,9 @@
     <dimen name="cost_text_size_millions">45sp</dimen>
     <dimen name="cost_text_size_ten_millions">40sp</dimen>
     <dimen name="cost_text_size_hundred_millions">37sp</dimen>
+    <dimen name="go_stop_margin">68dp</dimen>
+    <dimen name="negative_label_margin">-15dp</dimen>
+    <dimen name="config_width">150dp</dimen>
 
     <dimen name="default_padding_half">5dp</dimen>
     <dimen name="default_padding">10dp</dimen>

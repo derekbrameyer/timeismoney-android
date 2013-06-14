@@ -85,6 +85,18 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
     private static final BigDecimal tenMillion = new BigDecimal(10000000);
     private static final BigDecimal hundredMillion = new BigDecimal(100000000);
 
+    private class ConfigurationObject {
+
+        public BigDecimal hourlyRate;
+        public BigDecimal millisRate;
+        public BigDecimal peopleCount;
+        public BigDecimal cost;
+        public long currentTimeElapsed;
+        public long totalTimeElapsed;
+        public long startTime;
+        public boolean goStopIsSelected;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,9 +109,35 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         getSupportActionBar().setTitle(s);
 
-        mHourlyRate = mDatastore.getHourlyRate();
-        mMillisRate = mHourlyRate.divide(new BigDecimal(60d * 60d * 1000d), 20, BigDecimal.ROUND_HALF_UP);
-        mPeopleCount = mDatastore.getPeopleCount();
+        mHandler = new Handler();
+        final ConfigurationObject config = (ConfigurationObject) getLastCustomNonConfigurationInstance();
+        if (config != null) {
+            mHourlyRate = config.hourlyRate;
+            mMillisRate = config.millisRate;
+            mPeopleCount = config.peopleCount;
+            mCost = config.cost;
+            mCurrentTimeElapsed = config.currentTimeElapsed;
+            mTotalTimeElapsed = config.totalTimeElapsed;
+            mStartTime = config.startTime;
+            goStop.setSelected(config.goStopIsSelected);
+            if (config.goStopIsSelected) {
+                // Start the timer up
+                goStop.setText(R.string.stop_excl);
+                reset.setVisibility(View.GONE);
+                mHandler.post(updater);
+            } else {
+                goStop.setText(R.string.go_excl);
+                mHandler.removeCallbacks(updater);
+                if (mCost.compareTo(BigDecimal.ZERO) > 0) {
+                    reset.setVisibility(View.VISIBLE);
+                    setShareIntent();
+                }
+            }
+        } else {
+            mHourlyRate = mDatastore.getHourlyRate();
+            mMillisRate = mHourlyRate.divide(new BigDecimal(60d * 60d * 1000d), 20, BigDecimal.ROUND_HALF_UP);
+            mPeopleCount = mDatastore.getPeopleCount();
+        }
 
         mCostTextSizeOnes = getResources().getDimensionPixelSize(R.dimen.cost_text_size_ones);
         mCostTextSizeTens = getResources().getDimensionPixelSize(R.dimen.cost_text_size_tens);
@@ -120,7 +158,6 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
         setCost();
         setTimeElapsed();
 
-        mHandler = new Handler();
         FragmentManager fm = getSupportFragmentManager();
         mHourlyRatePickerBuilder = new NumberPickerBuilder()
                 .setFragmentManager(fm)
@@ -310,6 +347,20 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
             }
             mShareActionProvider.setShareIntent(shareIntent);
         }
+    }
+
+    @Override
+    public Object onRetainCustomNonConfigurationInstance() {
+        final ConfigurationObject config = new ConfigurationObject();
+        config.hourlyRate = mHourlyRate;
+        config.millisRate = mMillisRate;
+        config.peopleCount = mPeopleCount;
+        config.cost = mCost;
+        config.currentTimeElapsed = mCurrentTimeElapsed;
+        config.totalTimeElapsed = mTotalTimeElapsed;
+        config.startTime = mStartTime;
+        config.goStopIsSelected = goStop.isSelected();
+        return config;
     }
 
     @Override

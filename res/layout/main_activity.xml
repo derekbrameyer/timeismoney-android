@@ -5,8 +5,7 @@
         xmlns:oak="http://oak/oak/schema"
         android:fillViewport="true">
     <RelativeLayout
-            style="@style/FillWidth"
-            android:orientation="vertical">
+            style="@style/FillWidth">
         <LinearLayout
                 style="@style/FillWidth"
                 android:id="@+id/config"
@@ -33,7 +32,7 @@
                 <oak.widget.TextViewWithFont
                         style="@style/DefaultTextView.Large"
                         android:text="@string/hourly_rate"
-                        android:layout_marginTop="-15dp"
+                        android:layout_marginTop="@dimen/negative_label_margin"
                         android:layout_gravity="center_horizontal"
                         oak:font="@string/default_font_light"/>
             </LinearLayout>
@@ -75,7 +74,7 @@
                 <oak.widget.TextViewWithFont
                         style="@style/DefaultTextView.Large"
                         android:text="@string/num_people"
-                        android:layout_marginTop="-15dp"
+                        android:layout_marginTop="@dimen/negative_label_margin"
                         android:layout_gravity="center_horizontal"
                         oak:font="@string/default_font_light"/>
             </LinearLayout>
@@ -89,8 +88,8 @@
                 android:textColor="@color/orange_text_color_selector"
                 android:text="@string/go_excl"
                 android:gravity="center_horizontal|center_vertical"
-                android:layout_marginLeft="68dp"
-                android:layout_marginRight="68dp"
+                android:layout_marginLeft="@dimen/go_stop_margin"
+                android:layout_marginRight="@dimen/go_stop_margin"
                 android:layout_marginBottom="@dimen/default_padding"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
