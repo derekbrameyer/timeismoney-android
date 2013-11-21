@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.text.style.MetricAffectingSpan;
 
+import oak.util.OakUtils;
 import oak.widget.TextViewWithFont;
 
 /**
@@ -15,7 +16,7 @@ public class FontTypefaceSpan extends MetricAffectingSpan {
     private Typeface mTypeface;
 
     public FontTypefaceSpan(Context context, String typefaceName) {
-        mTypeface = TextViewWithFont.getStaticTypeFace(context, typefaceName);
+        mTypeface = OakUtils.getStaticTypeFace(context, typefaceName);
     }
 
     @Override

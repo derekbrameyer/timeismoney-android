@@ -1,0 +1,11 @@
+<resources>
+    <style name="TimeIsMoneyActionBar" parent="@android:style/Widget.ActionBar">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:displayOptions">showHome|showTitle</item>
+        <item name="android:titleTextStyle">@style/TimeIsMoneyActionBarTitleTextStyle</item>
+    </style>
+    <style name="TimeIsMoneyActionBarTitleTextStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+</resources>

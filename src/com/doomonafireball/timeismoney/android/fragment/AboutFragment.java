@@ -1,7 +1,6 @@
 package com.doomonafireball.timeismoney.android.fragment;
 
 import com.doomonafireball.timeismoney.android.R;
-import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockDialogFragment;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -10,13 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import oak.widget.TextViewWithFont;
+import oak.util.OakUtils;
+import roboguice.fragment.RoboDialogFragment;
 import roboguice.inject.InjectView;
 
 /**
  * User: derek Date: 6/9/13 Time: 11:26 PM
  */
-public class AboutFragment extends RoboSherlockDialogFragment {
+public class AboutFragment extends RoboDialogFragment {
 
     @InjectView(R.id.about_copy) private TextView aboutCopy;
 
@@ -38,7 +38,7 @@ public class AboutFragment extends RoboSherlockDialogFragment {
         try {
             ((TextView) getDialog().findViewById(android.R.id.title))
                     .setTypeface(
-                            TextViewWithFont.getStaticTypeFace(getActivity(), getString(R.string.default_font_bold)));
+                            OakUtils.getStaticTypeFace(getActivity(), getString(R.string.default_font_bold)));
 
         } catch (Exception e) {
             // No-op

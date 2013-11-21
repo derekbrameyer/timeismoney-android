@@ -13,16 +13,12 @@
     <style name="FillHeight" parent="Wrap">
         <item name="android:layout_height">fill_parent</item>
     </style>
-    <style name="TimeIsMoneyActionBar" parent="Widget.Sherlock.ActionBar.Solid">
-        <item name="background">@color/orange</item>
+    <style name="TimeIsMoneyActionBar" parent="@android:style/Widget.ActionBar">
         <item name="android:background">@color/orange</item>
-        <item name="displayOptions">showHome|showTitle</item>
         <item name="android:displayOptions">showHome|showTitle</item>
-        <item name="titleTextStyle">@style/TimeIsMoneyActionBarTitleTextStyle</item>
         <item name="android:titleTextStyle">@style/TimeIsMoneyActionBarTitleTextStyle</item>
-        <item name="actionModeShareDrawable">@drawable/ic_menu_share</item>
     </style>
-    <style name="TimeIsMoneyActionBarTitleTextStyle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+    <style name="TimeIsMoneyActionBarTitleTextStyle" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">@color/navy</item>
         <item name="android:textSize">24sp</item>
     </style>

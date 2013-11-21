@@ -2,9 +2,6 @@ package com.doomonafireball.timeismoney.android.activity;
 
 import com.google.inject.Inject;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.ShareActionProvider;
 import com.doomonafireball.betterpickers.hmspicker.HmsPickerBuilder;
 import com.doomonafireball.betterpickers.hmspicker.HmsPickerDialogFragment;
 import com.doomonafireball.betterpickers.numberpicker.NumberPickerBuilder;
@@ -13,7 +10,6 @@ import com.doomonafireball.timeismoney.android.Datastore;
 import com.doomonafireball.timeismoney.android.R;
 import com.doomonafireball.timeismoney.android.fragment.AboutFragment;
 import com.doomonafireball.timeismoney.android.util.FontTypefaceSpan;
-import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,8 +19,11 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.util.TypedValue;
 import android.view.HapticFeedbackConstants;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -32,10 +31,11 @@ import java.text.NumberFormat;
 import java.util.Currency;
 import java.util.Locale;
 
+import roboguice.activity.RoboFragmentActivity;
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
 
-public class MainActivity extends RoboSherlockFragmentActivity implements
+public class MainActivity extends RoboFragmentActivity implements
         NumberPickerDialogFragment.NumberPickerDialogHandler, HmsPickerDialogFragment.HmsPickerDialogHandler {
 
     @InjectView(R.id.hourly_rate) TextView hourlyRate;
@@ -102,12 +102,11 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-
         SpannableString s = new SpannableString(getString(R.string.app_name));
         s.setSpan(new FontTypefaceSpan(this, getString(R.string.default_font)), 0, s.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        getSupportActionBar().setTitle(s);
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setTitle(s);
 
         mHandler = new Handler();
         final ConfigurationObject config = (ConfigurationObject) getLastCustomNonConfigurationInstance();
@@ -381,9 +380,10 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.main_activity_menu, menu);
+        getMenuInflater().inflate(R.menu.main_activity_menu, menu);
 
         MenuItem actionItem = menu.findItem(R.id.menu_share_action_provider);
+        actionItem.setIcon(R.drawable.ic_menu_share);
         mShareActionProvider = (ShareActionProvider) actionItem.getActionProvider();
         mShareActionProvider.setShareHistoryFileName(ShareActionProvider.DEFAULT_SHARE_HISTORY_FILE_NAME);
         setShareIntent();
@@ -403,7 +403,19 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
     }
 
     @Override
-    public void onDialogNumberSet(int number, double decimal, boolean isNegative, double fullNumber) {
+    public void onDialogHmsSet(int reference, int hours, int minutes, int seconds) {
+        if (mTotalTimeElapsed == 0l) {
+            reset.setVisibility(View.VISIBLE);
+        }
+        mTotalTimeElapsed +=
+                (((long) hours) * 60l * 60l * 1000l) + (((long) minutes) * 60l * 1000l) + (((long) seconds) * 1000l);
+        mCost = mMillisRate.multiply(mPeopleCount).multiply(new BigDecimal(mTotalTimeElapsed));
+        setCost();
+        setTimeElapsed();
+    }
+
+    @Override
+    public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
         if (pickingHourlyRate) {
             mHourlyRate = new BigDecimal(number);
             mDatastore.persistHourlyRate(mHourlyRate);
@@ -416,18 +428,6 @@ public class MainActivity extends RoboSherlockFragmentActivity implements
                 setPeopleCountText();
             }
         }
-    }
-
-    @Override
-    public void onDialogHmsSet(int hours, int minutes, int seconds) {
-        if (mTotalTimeElapsed == 0l) {
-            reset.setVisibility(View.VISIBLE);
-        }
-        mTotalTimeElapsed +=
-                (((long) hours) * 60l * 60l * 1000l) + (((long) minutes) * 60l * 1000l) + (((long) seconds) * 1000l);
-        mCost = mMillisRate.multiply(mPeopleCount).multiply(new BigDecimal(mTotalTimeElapsed));
-        setCost();
-        setTimeElapsed();
     }
 }
 
